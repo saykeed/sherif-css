@@ -1,70 +1,42 @@
+import { prefixTypes } from "./types/prefixTypes";
+import { useLinkCss } from "./link_css.js";
+import { addBackground, addMargin, addPadding, addTextColor } from "./css_functions/index.js";
 
 let cleanedCss:string[] = []
-let css_content = ``;
+const { linkCss, clearCssContent } = useLinkCss()
 
 export const useGenerateCss = () => {
     const cleanClassNames = (classNames:string[]) => {
-        cleanedCss = []
-        css_content = ``
         for (const el of classNames) {
             if (el.includes('-') && !cleanedCss.includes(el)) cleanedCss.push(el)
         }
         generateCssFile()
     }
 
-    const addBackground = (className:string, color:string) => {
-        css_content += `
-            .${className} {
-                background: ${color};
-            }
-        `
-    }
-
-    const addTextColor = (className:string, color:string) => {
-        css_content += `
-            .${className} {
-                color: ${color};
-            }
-        `
-    }
-
-    const addPadding = (className:string, size:number) => {
-        css_content += `
-            .${className} {
-                padding: ${Number(size)*4}px;
-            }
-        `
-    }
-
     const generateCssFile = () => {
         for (const item of cleanedCss) {
             const list = item.split('-')
-            if (list[0] === 'bg'){
-                addBackground(item, list[1])
+            const prefix:prefixTypes = list[0] as prefixTypes
+            const suffix = list[1]
+            if (prefix === 'bg'){
+                addBackground(item, suffix)
             }
-            if (list[0] === 'text'){
-                addTextColor(item, list[1])
+            if (prefix === 'text'){
+                addTextColor(item, suffix)
             }
-            if (list[0] === 'p' && !isNaN(Number(list[1]))){
-                addPadding(item, Number(list[1]))
+            if (prefix === 'p'){
+                addPadding(item, suffix)
             }
+            if (prefix === 'm'){
+                addMargin(item, suffix)
+            }
+            
         }
-
-        console.log(css_content)
-        // Create a blob from the generated CSS content
-        var blob = new Blob([css_content], { type: 'text/css' });
-        var cssUrl = URL.createObjectURL(blob);
-
-        // Create a link element for the CSS file and set its attributes
-        var linkElement = document.createElement('link');
-        linkElement.rel = 'stylesheet';
-        linkElement.href = cssUrl;
-
-        // Append the link element to the <head> of the document
-        document.head.appendChild(linkElement);
-
+        linkCss()
     }
     const generateCss = (classNames:string[]) => {
+        cleanedCss = []
+        clearCssContent()
         cleanClassNames(classNames)
     }
 

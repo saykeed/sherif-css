@@ -1,0 +1,1 @@
+export type prefixTypes = 'text' | 'bg' | 'p' | 'py' | 'px' | 'pl' | 'pr' | 'pt' | 'pb' | 'm' | 'my' | 'mx' | 'ml' | 'mr' | 'mt' | 'mb' | 'font' | 'border' | 'w' | 'h'

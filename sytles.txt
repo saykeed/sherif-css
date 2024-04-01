@@ -1,16 +1,16 @@
 ** to be generated
-all display styles
 padding, padding-vertical, padding-horizontal, padding-all-sides
 margin, margin-vertical, margin-horizontal, margin-all-sides, mx-auto
-background-color
-text-color,
-font-size, underline,font-weight
+background-color (done)
+text-color, (done)
+font-size, underline, font-weight
 border, border-color, border-style, border-all-direction(t,b,l,r), border-radius
 width (should include specific sizes like w-[100px]), all width properties
 height (should include specific sizes like h-[100px]), all height properties
 
 
 ** fixed styles
+all display styles
 flex, all flex properties(find them)
 grid, all grid properties (find them)
 
