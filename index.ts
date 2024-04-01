@@ -9,7 +9,7 @@ const getClassNames = () => {
     const elements = document.body.querySelectorAll('*');
 
     elements.forEach(function(element) {
-        var classes = element.classList;
+        var classes:any = element.classList;
         classNames.push(...classes)
         
     });
