@@ -2,7 +2,7 @@ import { useGenerateCss } from "./generateCss.js"
 
 const { generateCss } = useGenerateCss()
 
-let classNames = []
+let classNames:string[] = []
 
 const getClassNames = () => {
     classNames = []
