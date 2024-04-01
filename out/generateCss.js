@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useGenerateCss = void 0;
 let cleanedCss = [];
 let css_content = ``;
-const useGenerateCss = () => {
+export const useGenerateCss = () => {
     const cleanClassNames = (classNames) => {
         cleanedCss = [];
         css_content = ``;
@@ -63,4 +60,3 @@ const useGenerateCss = () => {
     };
     return { generateCss };
 };
-exports.useGenerateCss = useGenerateCss;

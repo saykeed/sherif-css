@@ -1,7 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const generateCss_js_1 = require("./generateCss.js");
-const { generateCss } = (0, generateCss_js_1.useGenerateCss)();
+import { useGenerateCss } from "./generateCss.js";
+const { generateCss } = useGenerateCss();
 let classNames = [];
 const getClassNames = () => {
     classNames = [];
